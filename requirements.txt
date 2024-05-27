@@ -1,0 +1,6 @@
+Django
+django-extensions
+ipython
+mysqlclient
+pandas
+psycopg2-binary

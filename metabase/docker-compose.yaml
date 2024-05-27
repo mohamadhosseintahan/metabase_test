@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  metabase:
+    image: metabase/metabase
+    container_name: metabase
+    hostname: metabase
+    platform: linux/amd64
+    volumes:
+    - /dev/urandom:/dev/random:ro
+    ports:
+      - 3000:3000
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: nba
+      MB_DB_PORT: 5432
+      MB_DB_USER: test
+      MB_DB_PASS: test
+      MB_DB_HOST: db_gateway
+      MB_PASSWORD_COMPLEXITY : weak
+      MB_PASSWORD_LENGTH: 6
+      MB_ADMIN_EMAIL: newadmin@example.com
+      MB_ADMIN_PASSWORD: newpassword
+    healthcheck:
+      test: curl --fail -I http://localhost:3000/api/health || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    networks:
+      - pg_network
+
+networks:
+  pg_network:
+    external: true
