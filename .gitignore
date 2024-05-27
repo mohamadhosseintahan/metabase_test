@@ -1,3 +1,5 @@
 /Mendeley_data
 /venv
 .idea
+docker-compose.yaml
+Dockerfile

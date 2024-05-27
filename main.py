@@ -111,7 +111,6 @@ for index, row in df.iterrows():
         MendeleyData.objects.bulk_create(instances)
         instances = []
 
-    print(index)
 
 # remaining data from end of dataframe
 MendeleyData.objects.bulk_create(instances)
